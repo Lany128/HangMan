@@ -9,10 +9,11 @@ namespace HangMan
         {
            const char  EMPTY_LINE = '_';
            const int ATTEMPTS_LEFT = 10;
+
            int attemptsLeft = ATTEMPTS_LEFT; //will track attempts left
-           char guessTheWord = '*';
-           const int MIN_AMOUNTS_OF_LETTER_TO_GUESS = 3;
-            string wordGuess = ""; 
+           const char GUESS_THE_ENTIRE_WORD_OPTION = '*';
+           const int MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD = 3;
+           string wordGuess = ""; 
 
             string[] theList = {"Rose", "Lotus", "Marigold", "Jasmine", "Periwinkle"};
             
@@ -48,14 +49,14 @@ namespace HangMan
                     }
                 }
 
-                if (missingLetter < MIN_AMOUNTS_OF_LETTER_TO_GUESS) 
+                if (missingLetter >= MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD) 
                 {
-                    Console.WriteLine($"If you wish to guess the entire word, press {guessTheWord}.");
+                    Console.WriteLine($"If you wish to guess the entire word, press {GUESS_THE_ENTIRE_WORD_OPTION}.");
                 
                 }
 
                 //If the user decides to guess the whole word
-                if (guess == guessTheWord && missingLetter < MIN_AMOUNTS_OF_LETTER_TO_GUESS)
+                if (guess == GUESS_THE_ENTIRE_WORD_OPTION && missingLetter >= MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD)
                 { 
                     Console.WriteLine("Enter the entire guessing word: ");
                     wordGuess= Console.ReadLine().ToLower();
@@ -105,24 +106,17 @@ namespace HangMan
                     Console.WriteLine("Incorrect Letter!");
                 }
 
-                for (int i = 0; i < guessedLetters.Length; i++)
-                {
-                    if (guessedLetters[i] == EMPTY_LINE)
-                    {
-                        missingLetter++;
-                    }
-                }
-
+               
                 if (new string(guessedLetters) == selectedWord)
                 {
-                    Console.WriteLine($"Congratulations!\nYou guessed the word;{selectedWord}");
+                    Console.WriteLine($"Congratulations!\nYou guessed the word; {selectedWord}");
                     break;
                 }
             }
 
             if (attemptsLeft == 0)
                 {
-                    Console.WriteLine($"Sorry,you are out of attempts.\nthe word was:{selectedWord}");
+                    Console.WriteLine($"Sorry,you are out of attempts.\nthe word was: {selectedWord}");
                 }
                 Console.WriteLine("Thanks for playing");
                 Console.ReadLine();
