@@ -49,14 +49,14 @@ namespace HangMan
                     }
                 }
 
-                if (missingLetter >= MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD) 
+                if (EMPTY_LINE <= MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD) 
                 {
                     Console.WriteLine($"If you wish to guess the entire word, press {GUESS_THE_ENTIRE_WORD_OPTION}.");
                 
                 }
 
                 //If the user decides to guess the whole word
-                if (guess == GUESS_THE_ENTIRE_WORD_OPTION && missingLetter >= MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD)
+                if (guess == GUESS_THE_ENTIRE_WORD_OPTION && EMPTY_LINE <= MIN_AMOUNTS_OF_LETTER_TO_GUESS_THE_ENTIRE_WORD)
                 { 
                     Console.WriteLine("Enter the entire guessing word: ");
                     wordGuess= Console.ReadLine().ToLower();
@@ -116,7 +116,7 @@ namespace HangMan
 
             if (attemptsLeft == 0)
                 {
-                    Console.WriteLine($"Sorry,you are out of attempts.\nthe word was: {selectedWord}");
+                    Console.WriteLine($"Sorry,you are out of attempts.\nthe word was:{selectedWord}");
                 }
                 Console.WriteLine("Thanks for playing");
                 Console.ReadLine();
